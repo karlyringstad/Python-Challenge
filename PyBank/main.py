@@ -3,10 +3,10 @@
 import os
 import csv
 
-# Path to collect data from Downloads folder
+# Path to collect data from Desktop
 budget_data = os.path.join("/Users/karly/Desktop/budget_data.csv")
 
-# Define variables as 
+# Define variables as counters and lists
 total_months = 0
 total_prof_loss = 0
 value = 0
