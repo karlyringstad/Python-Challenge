@@ -21,39 +21,44 @@ with open(budget_data) as csvfile:
     # Read the header row first
     csv_header = next(csvreader)
 
-    #Reading the first row (so that we track the changes properly)
+    # Read the first row 
     first_row = next(csvreader)
+    
+    # Total number of months
     total_months += 1
+    
+    # Net total amount of Profits/Losses
     total_prof_loss += int(first_row[1])
     value = int(first_row[1])
     
-    #Going through each row of data after the header & first row 
+    # Loop through each row of data after header and first row
     for row in csvreader:
-        # Keeping track of the dates
+        
+        # Keep track of dates
         dates.append(row[0])
         
-        # Calculate the change, then add it to list of changes
-        change = int(row[1])-value
-        profits.append(change)
+        # Calculate the change and add to changes list
+        prof_loss_change = int(row[1])-value
+        profits.append(prof_loss_change)
         value = int(row[1])
         
-        #Total number of months
+        # Total number of months
         total_months += 1
 
-        #Total net amount of "Profit/Losses over entire period"
+        # Net total amount of Profits/Losses
         total_prof_loss += + int(row[1])
 
-    #Greatest increase in profits
-    greatest_increase = max(profits)
-    greatest_index = profits.index(greatest_increase)
+    # Greatest increase in profits
+    greatest_inc = max(profits)
+    greatest_index = profits.index(greatest_inc)
     greatest_date = dates[greatest_index]
 
-    #Greatest decrease (lowest increase) in profits 
-    greatest_decrease = min(profits)
-    worst_index = profits.index(greatest_decrease)
+    # Greatest decrease in profits 
+    greatest_dec = min(profits)
+    worst_index = profits.index(greatest_dec)
     worst_date = dates[worst_index]
 
-    #Average change in "Profit/Losses between months over entire period"
+    # Average of the changes in Profits/Losses
     avg_change = sum(profits)/len(profits)
     
 
@@ -63,5 +68,5 @@ print("---------------------")
 print(f"Total Months: {str(total_months)}")
 print(f"Total: ${str(total_prof_loss)}")
 print(f"Average Change: ${str(round(avg_change,2))}")
-print(f"Greatest Increase in Profits: {greatest_date} (${str(greatest_increase)})")
-print(f"Greatest Decrease in Profits: {worst_date} (${str(greatest_decrease)})")
+print(f"Greatest Increase in Profits: {greatest_date} (${str(greatest_inc)})")
+print(f"Greatest Decrease in Profits: {worst_date} (${str(greatest_dec)})")
