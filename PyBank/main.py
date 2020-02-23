@@ -62,7 +62,7 @@ with open(budget_data) as csvfile:
     avg_change = sum(profits)/len(profits)
     
 
-#Displaying information
+# Print final analysis
 print("Financial Analysis")
 print("---------------------")
 print(f"Total Months: {str(total_months)}")
@@ -70,3 +70,16 @@ print(f"Total: ${str(total_prof_loss)}")
 print(f"Average Change: ${str(round(avg_change,2))}")
 print(f"Greatest Increase in Profits: {greatest_date} (${str(greatest_inc)})")
 print(f"Greatest Decrease in Profits: {worst_date} (${str(greatest_dec)})")
+
+# Output file
+text_file = os.path.join("/Users/karly/Desktop/Python-Challenge/PyBank/Pybank_Summary.txt")
+
+with open(text_file,"w") as file:
+
+    file.write("Financial Analysis\n")
+    file.write("---------------------\n")
+    file.write(f"Total Months: {str(total_months)}\n")
+    file.write(f"Total: ${str(total_prof_loss)}\n")
+    file.write(f"Average Change: ${str(round(avg_change,2))}\n")
+    file.write(f"Greatest Increase in Profits: {greatest_date} (${str(greatest_inc)})\n")
+    file.write(f"Greatest Decrease in Profits: {worst_date} (${str(greatest_dec)})\n")
